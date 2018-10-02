@@ -7,7 +7,7 @@ WORKDIR $DIRPATH
 RUN git clone https://github.com/indralab/indra_db.git && \
     pip list && \
     echo $PYTHONPATH && \
-    export PYTHONPATH=.:$PYTHONPATH:indra_db
+    export PYTHONPATH=.:$PYTHONPATH:indra_db && \
     cd indra_db && \
     git checkout $BUILD_BRANCH && \
     echo $BUILD_BRANCH && \
