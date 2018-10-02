@@ -14,4 +14,4 @@ RUN git clone https://github.com/indralab/indra_db.git && \
     git branch && \
     mkdir /root/.config && \
     mkdir /root/.config/indra && \
-    echo "[indra]" > /root/.config/indra/config.ini && \
+    echo "[indra]" > /root/.config/indra/config.ini
