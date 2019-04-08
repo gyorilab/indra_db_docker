@@ -4,8 +4,12 @@ ENV DIRPATH /sw
 ENV PYTHONPATH "${DIRPATH}/indra_db:${PYTHONPATH}"
 WORKDIR $DIRPATH
 
-# Install INDRA and dependencies
-RUN git clone https://github.com/indralab/indra_db.git && \
+# Install INDRA DB and dependencies.
+RUN git clone https://github.com/pagreene/pgcopy.git && \
+    cd pgcopy && \
+    python setup.py install && \
+    cd .. && \
+    git clone https://github.com/indralab/indra_db.git && \
     pip list && \
     echo "PYTHONPATH =" $PYTHONPATH && \
     cd indra_db && \
