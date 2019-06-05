@@ -10,6 +10,9 @@ WORKDIR $DIRPATH
 RUN apt-get update && \
     apt-get install -y libpq5 libpq-dev
 
+# Update the protmapper
+RUN pip install -U git+https://github.com/indralab/protmapper.git
+
 # Install psycopg2
 RUN git clone https://github.com/psycopg/psycopg2.git && \
     cd psycopg2 && \
