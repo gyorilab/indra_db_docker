@@ -26,6 +26,7 @@ RUN git clone https://github.com/pagreene/pgcopy.git && \
 
 # Install adeft
 RUN pip install adeft
+RUN python -m adeft.download
 
 # Install indra_db
 RUN git clone https://github.com/indralab/indra_db.git && \
