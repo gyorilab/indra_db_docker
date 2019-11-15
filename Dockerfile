@@ -1,4 +1,4 @@
-FROM 292075781285.dkr.ecr.us-east-1.amazonaws.com/indra:$INDRA_DOCKER_VERSION
+FROM 292075781285.dkr.ecr.us-east-1.amazonaws.com/indra:testing
 
 ARG BUILD_BRANCH
 
