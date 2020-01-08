@@ -10,7 +10,7 @@ WORKDIR $DIRPATH
 RUN cd indra && \
     git fetch --all && \
     git checkout $INDRA_BRANCH && \
-    echo $INDRA_BRANCH && \
+    echo "INDRA_BRANCH=" $INDRA_BRANCH && \
     pip install -e . -U
 
 
