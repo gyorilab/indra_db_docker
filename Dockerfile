@@ -1,10 +1,18 @@
 FROM 292075781285.dkr.ecr.us-east-1.amazonaws.com/indra:testing
 
 ARG BUILD_BRANCH
+ARG INDRA_BRANCH
 
 ENV DIRPATH /sw
 ENV PYTHONPATH "${DIRPATH}/indra_db:${PYTHONPATH}"
 WORKDIR $DIRPATH
+
+RUN cd indra && \
+    git fetch --all && \
+    git checkout $INDRA_BRANCH && \
+    echo $INDRA_BRANCH && \
+    pip install . -e -U
+
 
 # Install libpq5
 RUN apt-get update && \
