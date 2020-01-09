@@ -1,4 +1,4 @@
-FROM 292075781285.dkr.ecr.us-east-1.amazonaws.com/indra:testing
+FROM 292075781285.dkr.ecr.us-east-1.amazonaws.com/indra:db
 
 ARG BUILD_BRANCH
 ARG INDRA_BRANCH
