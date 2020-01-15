@@ -15,9 +15,8 @@ RUN cd indra && \
 
 # Install libpq5 and some other necessities.
 RUN apt-get update && \
-    apt-get install -y libpq5 libpq-dev postgresql-client && \
-            postgresql-client-common && \
-    pip install awscli
+    apt-get install -y libpq5 libpq-dev postgresql-client postgresql-client-common
+RUN pip install awscli
 
 # Update the protmapper
 RUN pip install -U git+https://github.com/indralab/protmapper.git
