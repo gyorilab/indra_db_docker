@@ -4,7 +4,7 @@ ARG BUILD_BRANCH
 ARG INDRA_BRANCH
 
 ENV DIRPATH /sw
-ENV PYTHONPATH "${DIRPATH}/covid-19:${PYTHONPATH}"
+ENV PYTHONPATH "$PYTHONPATH:${DIRPATH}/covid-19"
 WORKDIR $DIRPATH
 
 RUN cd indra && \
@@ -45,7 +45,7 @@ RUN git clone https://github.com/indralab/covid-19.git
 # Install indra_db
 RUN git clone https://github.com/indralab/indra_db.git && \
     cd indra_db && \
-    pip install -U . && \
+    pip install -e . && \
     pip list && \
     echo "PYTHONPATH =" $PYTHONPATH && \
     git checkout $BUILD_BRANCH && \
