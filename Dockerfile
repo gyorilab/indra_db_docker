@@ -19,7 +19,8 @@ RUN apt-get update && \
 RUN pip install awscli
 
 # Update the protmapper
-RUN pip install -U git+https://github.com/indralab/protmapper.git
+RUN pip install -U git+https://github.com/indralab/protmapper.git && \
+    python -m protmapper.resources
 
 # Install psycopg2
 RUN git clone https://github.com/psycopg/psycopg2.git && \
@@ -33,11 +34,7 @@ RUN git clone https://github.com/pagreene/pgcopy.git && \
     python setup.py install
 
 # Install adeft
-RUN pip install adeft
 RUN python -m adeft.download
-
-# Install gilda
-RUN pip install gilda
 
 # Install covid-19
 RUN git clone https://github.com/indralab/covid-19.git
