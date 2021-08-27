@@ -18,9 +18,6 @@ RUN apt-get update && \
     apt-get install -y libpq5 libpq-dev postgresql-client postgresql-client-common
 RUN pip install awscli
 
-# Update the protmapper
-RUN pip install -U git+https://github.com/indralab/protmapper.git
-
 # Install psycopg2
 RUN git clone https://github.com/psycopg/psycopg2.git && \
     cd psycopg2 && \
@@ -32,20 +29,13 @@ RUN git clone https://github.com/pagreene/pgcopy.git && \
     cd pgcopy && \
     python setup.py install
 
-# Install adeft
-RUN pip install adeft
-RUN python -m adeft.download
-
-# Install gilda
-RUN pip install gilda
-
 # Install covid-19
 RUN git clone https://github.com/indralab/covid-19.git
 
 # Install indra_db
 RUN git clone https://github.com/indralab/indra_db.git && \
     cd indra_db && \
-    pip install -e . && \
+    pip install -e .[all] && \
     pip list && \
     echo "PYTHONPATH =" $PYTHONPATH && \
     git checkout $BUILD_BRANCH && \
