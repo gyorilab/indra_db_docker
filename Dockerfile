@@ -18,10 +18,6 @@ RUN apt-get update && \
     apt-get install -y libpq5 libpq-dev postgresql-client postgresql-client-common
 RUN pip install awscli
 
-# Update the protmapper
-RUN pip install -U git+https://github.com/indralab/protmapper.git && \
-    python -m protmapper.resources
-
 # Install psycopg2
 RUN git clone https://github.com/psycopg/psycopg2.git && \
     cd psycopg2 && \
@@ -32,9 +28,6 @@ RUN git clone https://github.com/psycopg/psycopg2.git && \
 RUN git clone https://github.com/pagreene/pgcopy.git && \
     cd pgcopy && \
     python setup.py install
-
-# Install adeft
-RUN python -m adeft.download
 
 # Install covid-19
 RUN git clone https://github.com/indralab/covid-19.git
