@@ -42,7 +42,7 @@ RUN git clone https://github.com/indralab/covid-19.git
 # Install indra_db
 RUN git clone https://github.com/indralab/indra_db.git && \
     cd indra_db && \
-    pip install -e . && \
+    pip install -e .[all] && \
     pip list && \
     echo "PYTHONPATH =" $PYTHONPATH && \
     git checkout $BUILD_BRANCH && \
