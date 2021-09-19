@@ -32,6 +32,10 @@ RUN git clone https://github.com/pagreene/pgcopy.git && \
 # Install covid-19
 RUN git clone https://github.com/indralab/covid-19.git
 
+# Install sqlalchemy < 1.4 (due to indirect dependencies, it may be a later
+# version in the indra:db image
+RUN pip install "sqlalchemy<1.4"
+
 # Install indra_db
 RUN git clone https://github.com/indralab/indra_db.git && \
     cd indra_db && \
