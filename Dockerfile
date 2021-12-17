@@ -14,9 +14,12 @@ RUN cd indra && \
     pip install -e . -U
 
 # Install libpq5 and some other necessities.
-RUN apt-get update && \
-    apt-get install -y libpq5 libpq-dev postgresql-client postgresql-client-common
-RUN pip install awscli
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+    apt-get install -y lsb-core && \
+    echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | tee  /etc/apt/sources.list.d/pgdg.list && \
+    apt-get update && \
+    apt-get install -y libpq5 libpq-dev postgresql-client-13 postgresql-client-common && \
+    pip install awscli
 
 # Install psycopg2
 RUN git clone https://github.com/psycopg/psycopg2.git && \
@@ -33,7 +36,7 @@ RUN git clone https://github.com/pagreene/pgcopy.git && \
 RUN git clone https://github.com/indralab/covid-19.git
 
 # Install sqlalchemy < 1.4 (due to indirect dependencies, it may be a later
-# version in the indra:db image
+# version in the indra:db image)
 RUN pip install "sqlalchemy<1.4"
 
 # Install indra_db
